@@ -8,7 +8,7 @@ import java.util.UUID
 
 @Entity
 @Table(name = "Credit")
-data class Credits (
+data class Credit (
     @Column(nullable = false, unique = true)
     val creditCode: UUID = UUID.randomUUID(),
     val creditValue: BigDecimal = BigDecimal.ZERO,
