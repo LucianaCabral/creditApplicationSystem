@@ -4,7 +4,7 @@ import jakarta.persistence.*
 
 
 @Entity
-@Table(name = "Client")
+//@Table(name = "Client")
 data class Customer(
    @Column(nullable = false) var firstName : String = "",
    @Column(nullable = false) var lastName : String = "",
