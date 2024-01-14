@@ -17,6 +17,4 @@ data class Credits (
     //Muitos credits podem pertencer a um customer
     @ManyToOne val customer: Customer? = null,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
-
-
 )
