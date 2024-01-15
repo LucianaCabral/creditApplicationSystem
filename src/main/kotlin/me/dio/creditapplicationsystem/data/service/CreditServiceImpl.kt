@@ -1,7 +1,7 @@
 package me.dio.creditapplicationsystem.data.service
 
-import me.dio.creditapplicationsystem.model.entity.Credit
-import me.dio.creditapplicationsystem.repository.CreditRepository
+import me.dio.creditapplicationsystem.data.dao.entity.Credit
+import me.dio.creditapplicationsystem.data.service.repository.CreditRepository
 import java.util.*
 
 class CreditServiceImpl(

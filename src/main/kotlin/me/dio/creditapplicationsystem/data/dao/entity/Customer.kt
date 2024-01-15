@@ -1,4 +1,4 @@
-package me.dio.creditapplicationsystem.model.entity
+package me.dio.creditapplicationsystem.data.dao.entity
 
 import jakarta.persistence.*
 

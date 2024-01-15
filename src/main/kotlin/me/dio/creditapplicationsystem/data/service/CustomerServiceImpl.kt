@@ -1,8 +1,7 @@
 package me.dio.creditapplicationsystem.data.service
 
-import me.dio.creditapplicationsystem.data.service.CustomerService
-import me.dio.creditapplicationsystem.model.entity.Customer
-import me.dio.creditapplicationsystem.repository.CustomerRepository
+import me.dio.creditapplicationsystem.data.dao.entity.Customer
+import me.dio.creditapplicationsystem.data.service.repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 @Service

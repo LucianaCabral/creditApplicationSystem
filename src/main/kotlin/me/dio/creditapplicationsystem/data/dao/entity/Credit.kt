@@ -1,7 +1,6 @@
-package me.dio.creditapplicationsystem.model.entity
+package me.dio.creditapplicationsystem.data.dao.entity
 
 import jakarta.persistence.*
-import me.dio.creditapplicationsystem.enumeration.Status
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID

@@ -1,6 +1,6 @@
 package me.dio.creditapplicationsystem.data.service
 
-import me.dio.creditapplicationsystem.model.entity.Customer
+import me.dio.creditapplicationsystem.data.dao.entity.Customer
 
 interface CustomerService {
     fun save(customer: Customer) : Customer
