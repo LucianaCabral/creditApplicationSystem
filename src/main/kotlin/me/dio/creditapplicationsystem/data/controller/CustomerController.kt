@@ -7,6 +7,8 @@ import me.dio.creditapplicationsystem.data.controller.dto.CustomerView
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import me.dio.creditapplicationsystem.data.service.CustomerService
 import org.hibernate.annotations.UpdateTimestamp
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -22,15 +24,15 @@ class CustomerController(
     private val customerService: CustomerService
 ) {
     @PostMapping
-    fun saveCustomer(@RequestBody customerDTO: CustomerDTO): String {
+    fun saveCustomer(@RequestBody customerDTO: CustomerDTO): ResponseEntity<String> {
         val saveCustomer = this.customerService.save(customerDTO.toEntity())
-        return "Customer ${saveCustomer.email} saved"
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer ${saveCustomer.email} saved")
     }
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long): CustomerView {
+    fun findById(@PathVariable id: Long): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
-        return CustomerView(customer = customer)
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerView(customer = customer))
     }
 
     @DeleteMapping("/{id}")
@@ -40,10 +42,10 @@ class CustomerController(
     fun updateCustomer(
         @PathParam(value = "customrId") id: Long,
         @RequestBody customerUpdateDto: CustomerUpdateDto
-    ): CustomerView {
+    ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpDate: Customer = customerUpdateDto.toEntity(customer)
         val costumerUpdate: Customer = this.customerService.save(customerToUpDate)
-        return CustomerView(customer = costumerUpdate)
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerView(customer = costumerUpdate))
     }
 }
