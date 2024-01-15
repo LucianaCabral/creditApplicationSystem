@@ -2,8 +2,9 @@ package me.dio.creditapplicationsystem.data.service
 
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.service.repository.CreditRepository
+import org.springframework.stereotype.Service
 import java.util.*
-
+@Service
 class CreditServiceImpl(
     private val creditRepository: CreditRepository,
     private val customerService: CustomerService
