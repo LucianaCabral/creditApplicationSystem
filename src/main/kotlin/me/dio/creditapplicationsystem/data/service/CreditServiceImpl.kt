@@ -11,7 +11,7 @@ class CreditServiceImpl(
 ) : CreditService {
     override fun save(credit: Credit): Credit {
         credit.apply {
-            customer = credit.id?.let { customerService.findById(it) }
+            customer = customerService.findById(credit.customer?.id!!)
         }
         return creditRepository.save(credit)
     }
