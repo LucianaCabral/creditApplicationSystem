@@ -1,8 +1,8 @@
 package me.dio.creditapplicationsystem.data.controller
 
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditDto
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditView
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditViewList
+import me.dio.creditapplicationsystem.data.dto.request.CreditDto
+import me.dio.creditapplicationsystem.data.dto.response.CreditView
+import me.dio.creditapplicationsystem.data.dto.response.CreditViewList
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.service.CreditService
 import org.springframework.http.HttpStatus
