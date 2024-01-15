@@ -7,7 +7,7 @@ import java.util.*
 class CreditServiceImpl(
     private val creditRepository: CreditRepository,
     private val customerService: CustomerService
-): CreditService {
+) : CreditService {
     override fun save(credit: Credit): Credit {
         credit.apply {
             customer = credit.id?.let { customerService.findById(it) }
@@ -19,7 +19,9 @@ class CreditServiceImpl(
         TODO("Not yet implemented")
     }
 
-    override fun findByCreditCode(creditCode: UUID): Credit {
-        TODO("Not yet implemented")
+    override fun findByCreditCode(customerId: Long, creditCode: UUID): Credit {
+        val credit: Credit = this.creditRepository.findByCreditCode(creditCode = creditCode)
+            ?: throw RuntimeException("credit code no t found $creditCode")
+        return if (credit.customer?.id == customerId) credit else throw RuntimeException("Contact admin")
     }
 }
