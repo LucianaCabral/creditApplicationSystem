@@ -1,4 +1,4 @@
-package me.dio.creditapplicationsystem.data.controller.dto
+package me.dio.creditapplicationsystem.data.controller.dto.credit
 
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.dao.entity.Status

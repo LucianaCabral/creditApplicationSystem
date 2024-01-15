@@ -1,12 +1,11 @@
 package me.dio.creditapplicationsystem.data.controller
 
-import jakarta.websocket.server.PathParam
-import me.dio.creditapplicationsystem.data.controller.dto.CustomerDTO
-import me.dio.creditapplicationsystem.data.controller.dto.CustomerUpdateDto
-import me.dio.creditapplicationsystem.data.controller.dto.CustomerView
+import jakarta.validation.Valid
+import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerDTO
+import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerUpdateDto
+import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerView
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import me.dio.creditapplicationsystem.data.service.CustomerService
-import org.hibernate.annotations.UpdateTimestamp
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -40,8 +40,8 @@ class CustomerController(
 
     @PatchMapping
     fun updateCustomer(
-        @PathParam(value = "customrId") id: Long,
-        @RequestBody customerUpdateDto: CustomerUpdateDto
+        @RequestParam(value = "customerId") id: Long,
+        @RequestBody @Valid customerUpdateDto: CustomerUpdateDto
     ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpDate: Customer = customerUpdateDto.toEntity(customer)

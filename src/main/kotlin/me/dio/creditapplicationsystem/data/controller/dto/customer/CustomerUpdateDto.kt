@@ -1,6 +1,5 @@
-package me.dio.creditapplicationsystem.data.controller.dto
+package me.dio.creditapplicationsystem.data.controller.dto.customer
 
-import me.dio.creditapplicationsystem.data.dao.entity.Address
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import java.math.BigDecimal
 
