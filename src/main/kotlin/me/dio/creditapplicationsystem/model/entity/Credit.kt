@@ -18,6 +18,6 @@ data class Credit (
     val numberOfInstallment: Int = 0,
     @Enumerated val status: Status = Status.INPROGRESS,
     //Muitos credits podem pertencer a um customer
-    @ManyToOne val customer: Customer? = null,
+    @ManyToOne var customer: Customer? = null,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
 )

@@ -4,6 +4,6 @@ import me.dio.creditapplicationsystem.model.entity.Customer
 
 interface CustomerService {
     fun save(customer: Customer) : Customer
-    fun findById(customer: Customer):Customer
-    fun delete(id:Long): Customer
+    fun findById(id: Long) : Customer
+    fun delete(id:Long)
 }
