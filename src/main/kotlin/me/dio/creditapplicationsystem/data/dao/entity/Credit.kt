@@ -12,7 +12,7 @@ data class Credit (
     val creditCode: UUID = UUID.randomUUID(),
     val creditValue: BigDecimal = BigDecimal.ZERO,
     @Column(nullable = false)
-    val dayFirstInstallment: LocalDate,
+    var dayFirstInstallment: LocalDate,
     @Column(nullable = false)
     val numberOfInstallment: Int = 0,
     @Enumerated val status: Status = Status.INPROGRESS,
