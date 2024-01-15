@@ -27,7 +27,7 @@ class CreditController(
             .map { credit: Credit -> CreditViewList(credit) }.collect(Collectors.toList())
     }
 
-    @GetMapping
+    @GetMapping("/creditCode")
     fun findByCreditCode(
         @RequestParam(value = "customerId") customerId: Long,
         @PathVariable creditCode: UUID
