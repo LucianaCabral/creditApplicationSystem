@@ -1,8 +1,9 @@
 package me.dio.creditapplicationsystem.data.controller
 
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditDto
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditView
-import me.dio.creditapplicationsystem.data.controller.dto.credit.CreditViewList
+import jakarta.validation.Valid
+import me.dio.creditapplicationsystem.data.dto.request.CreditDto
+import me.dio.creditapplicationsystem.data.dto.response.CreditView
+import me.dio.creditapplicationsystem.data.dto.response.CreditViewList
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.service.CreditService
 import org.springframework.http.HttpStatus
@@ -15,13 +16,12 @@ import java.util.stream.Collectors
 @RequestMapping("/api/credits")
 class CreditController(
     private val creditService: CreditService
-
 ) {
     @PostMapping
-    fun saveCredit(creditDto: CreditDto): ResponseEntity<String> {
+    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
         val credit: Credit = this.creditService.save(credit = creditDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body("credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved")
+            .body("credit ${credit.creditCode} - Customer ${credit.customer?.email} saved")
     }
 
     @GetMapping

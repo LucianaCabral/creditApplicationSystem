@@ -1,9 +1,9 @@
 package me.dio.creditapplicationsystem.data.controller
 
 import jakarta.validation.Valid
-import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerDTO
-import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerUpdateDto
-import me.dio.creditapplicationsystem.data.controller.dto.customer.CustomerView
+import me.dio.creditapplicationsystem.data.dto.request.CustomerDTO
+import me.dio.creditapplicationsystem.data.dto.request.CustomerUpdateDto
+import me.dio.creditapplicationsystem.data.dto.response.CustomerView
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import me.dio.creditapplicationsystem.data.service.CustomerService
 import org.springframework.http.HttpStatus
