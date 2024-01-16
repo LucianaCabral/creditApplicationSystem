@@ -37,9 +37,35 @@ class ExceptionHandler {
     fun handlerValidException(ex: DataAccessException): ResponseEntity<ExceptionsDetails> {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
             ExceptionsDetails(
-                title = "Bad Request! Consult the Documentation",
+                title = "Conflit! Consult the Documentation",
                 timeStamp = LocalDateTime.now(),
                 status = HttpStatus.CONFLICT.value(),
+                exception = ex.javaClass.simpleName,
+                details = mutableMapOf(ex.cause.toString() to ex.message)
+            )
+        )
+    }
+
+    @ExceptionHandler(BusinessException::class)
+    fun handlerValidException(ex: BusinessException): ResponseEntity<ExceptionsDetails> {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+            ExceptionsDetails(
+                title = "Bad Request! Consult the Documentation",
+                timeStamp = LocalDateTime.now(),
+                status = HttpStatus.BAD_REQUEST.value(),
+                exception = ex.javaClass.simpleName,
+                details = mutableMapOf(ex.cause.toString() to ex.message)
+            )
+        )
+    }
+
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handlerValidException(ex: IllegalArgumentException): ResponseEntity<ExceptionsDetails> {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+            ExceptionsDetails(
+                title = "Bad Request! Consult the Documentation",
+                timeStamp = LocalDateTime.now(),
+                status = HttpStatus.BAD_REQUEST.value(),
                 exception = ex.javaClass.simpleName,
                 details = mutableMapOf(ex.cause.toString() to ex.message)
             )
