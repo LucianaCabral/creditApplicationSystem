@@ -46,7 +46,7 @@ spring:
 - Reinicia o projeto e veja se o BD local está on através: #### Testa Banco De Dados local:
 http://localhost:8080/h2-console, configure para a fazer o login
 
-- Para Gerar a documentação automaticamente Acresencenta neste mesmo arquivo application.yml
+- Para Gerar a documentação automaticamente utilizo a lib **springboot-openapi**  Acrescenta neste mesmo arquivo application.yml
 
 ```
 springdoc:
