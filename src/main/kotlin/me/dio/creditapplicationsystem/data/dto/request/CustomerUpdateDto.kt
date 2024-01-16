@@ -1,14 +1,16 @@
 package me.dio.creditapplicationsystem.data.dto.request
 
+import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.NotNull
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import java.math.BigDecimal
 
 data class CustomerUpdateDto(
-    val firstName: String,
-    val lastName: String,
-    val income: BigDecimal,
-    val street: String,
-    val zipCode: String,
+    @field:NotEmpty(message = "Add first name") val firstName: String,
+    @field:NotEmpty(message = "Add last name") val lastName: String,
+    @field:NotNull(message = "Invalid Input") val income: BigDecimal,
+    @field:NotEmpty(message = "Add your street") val street: String,
+    @field:NotEmpty(message = "Add your zip code") val zipCode: String,
 ) {
     fun toEntity(customer: Customer): Customer {
         customer.firstName = this.firstName
