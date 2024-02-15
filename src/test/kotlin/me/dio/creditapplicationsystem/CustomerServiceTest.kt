@@ -1,16 +1,10 @@
 package me.dio.creditapplicationsystem
 
-import io.mockk.MockKAnnotations
 import io.mockk.every
-import io.mockk.impl.annotations.InjectMockKs
-import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.SpyK
-import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.verify
 import me.dio.creditapplicationsystem.data.dao.entity.Address
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
-import me.dio.creditapplicationsystem.data.service.CustomerService
 import me.dio.creditapplicationsystem.data.service.CustomerServiceImpl
 import me.dio.creditapplicationsystem.data.service.repository.CustomerRepository
 import org.assertj.core.api.Assertions
@@ -37,13 +31,13 @@ class CustomerServiceTest {
     }
 
     private fun buildCustomer(
-        firstName: String = "Cami",
-        lastName: String = "Cavalcante",
+        firstName: String = "Lorem",
+        lastName: String = "Ipsum",
         cpf: String = "28475934625",
-        email: String = "camila@gmail.com",
+        email: String = "loremIpsum@gmail.com",
         password: String = "12345",
         zipCode: String = "12345",
-        street: String = "Rua da Cami",
+        street: String = "Rua das Palmeiras",
         income: BigDecimal = BigDecimal.valueOf(1000.0),
         id: Long = 1L
     ) = Customer(
