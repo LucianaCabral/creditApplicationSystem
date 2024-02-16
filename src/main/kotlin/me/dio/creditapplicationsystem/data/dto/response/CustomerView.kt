@@ -4,7 +4,7 @@ import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import java.math.BigDecimal
 
 data class CustomerView(
-    val firsName: String,
+    val firstName: String,
     val lastName: String,
     val cpf: String,
     val income: BigDecimal,
@@ -14,7 +14,7 @@ data class CustomerView(
     val id: Long?
 ) {
     constructor(customer: Customer) : this(
-        firsName = customer.firstName,
+        firstName = customer.firstName,
         lastName = customer.lastName,
         cpf = customer.cpf,
         income = customer.income,

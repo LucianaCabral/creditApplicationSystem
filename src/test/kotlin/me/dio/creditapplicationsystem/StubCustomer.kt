@@ -3,6 +3,7 @@ package me.dio.creditapplicationsystem
 import me.dio.creditapplicationsystem.data.dao.entity.Address
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
+import me.dio.creditapplicationsystem.data.dto.request.CustomerDTO
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.Month
@@ -32,6 +33,8 @@ internal object StubCustomer {
         income = income,
         id = id
     )
+
+
 
     fun buildCredit(
         creditValue: BigDecimal = BigDecimal.valueOf(500.0),
