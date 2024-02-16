@@ -1,9 +1,9 @@
 package me.dio.creditapplicationsystem
 
-import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import io.mockk.runs
 import io.mockk.verify
 import me.dio.creditapplicationsystem.StubCustomer.buildCustomer
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
@@ -65,4 +65,23 @@ class CustomerServiceTest {
             .withMessage("Id $fakeId not found")
         verify(exactly = 1) { repository.findById(fakeId) }
     }
+
+    @Test
+    fun `should customer delete customer By id `() {
+        //given
+        val fakeId: Long = Random().nextLong()
+        val fakeCustomer: Customer = buildCustomer(id = fakeId)
+        every { repository.findById(fakeId) } returns Optional.of(fakeCustomer)
+        every { repository.delete(fakeCustomer) } just runs
+
+        //when
+        customerService.delete(fakeId)
+
+        //then
+        verify(exactly = 1) {
+            repository.findById(fakeId)
+            repository.delete(fakeCustomer)
+        }
+    }
 }
+
