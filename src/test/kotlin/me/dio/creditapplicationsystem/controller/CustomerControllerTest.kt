@@ -139,6 +139,27 @@ class CustomerControllerTest {
             .andDo(MockMvcResultHandlers.print())
     }
 
+    @Test
+    fun `should not find customer whith invalid id and return 400 status`() {
+        //given
+        val invalidId: Long = 2L
+        //when
+        //then
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("$URL/$invalidId")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isBadRequest)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Bad Request! Consult the Documentation"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.timeStamp").exists())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.status").value(400))
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.exception")
+                    .value("BusinessException")
+            )
+            .andExpect(MockMvcResultMatchers.jsonPath("$.details[*]").isNotEmpty)
+            .andDo(MockMvcResultHandlers.print())
+    }
+
 
 
     fun buildCustomerDTO(
