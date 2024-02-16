@@ -136,7 +136,7 @@ class CustomerControllerTest {
             .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("loremIpsum@gmail.com"))
             .andExpect(MockMvcResultMatchers.jsonPath("$.zipCode").value("12345"))
             .andExpect(MockMvcResultMatchers.jsonPath("$.street").value("Rua das Palmeiras"))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(3))
             .andDo(MockMvcResultHandlers.print())
     }
 
@@ -208,7 +208,6 @@ class CustomerControllerTest {
         zipCode: String = "12345",
         street: String = "Rua das Palmeiras",
         income: BigDecimal = BigDecimal.valueOf(1000.0),
-        id: Long = 1L
     ) = CustomerDTO(
         firstName = firstName,
         lastName = lastName,
@@ -218,6 +217,5 @@ class CustomerControllerTest {
         password = password,
         street = street,
         zipCode = zipCode,
-        id = 1L
     )
 }

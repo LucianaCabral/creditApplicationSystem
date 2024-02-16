@@ -1,5 +1,6 @@
 package me.dio.creditapplicationsystem.repository
 
+import io.mockk.clearAllMocks
 import me.dio.creditapplicationsystem.data.dao.entity.Address
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
@@ -23,15 +24,14 @@ import java.util.UUID
 class CreditRepositoryIntegrationTest {
     @Autowired
     lateinit var creditRepository: CreditRepository
-    @Autowired
-    lateinit var testEntityManager: TestEntityManager
+    @Autowired lateinit var testEntityManager: TestEntityManager
 
     private lateinit var customer: Customer
     private lateinit var credit1: Credit
     private lateinit var credit2: Credit
 
     @BeforeEach
-    fun setup() {
+    fun setup () {
         customer = testEntityManager.persist(buildCustomer())
         credit1 = testEntityManager.persist(buildCredit(customer = customer))
         credit2 = testEntityManager.persist(buildCredit(customer = customer))
@@ -57,7 +57,7 @@ class CreditRepositoryIntegrationTest {
     @Test
     fun `should find all credits by customer id`() {
         //given
-        val customerId: Long = 1L
+        val customerId: Long =  1
         //when
         val creditList: List<Credit> = creditRepository.findAllByCustomer(customerId)
         //then
@@ -77,7 +77,6 @@ class CreditRepositoryIntegrationTest {
         numberOfInstallment = numberOfInstallments,
         customer = customer
     )
-
     private fun buildCustomer(
         firstName: String = "Lorem",
         lastName: String = "Ipsum",
@@ -87,6 +86,7 @@ class CreditRepositoryIntegrationTest {
         zipCode: String = "12345",
         street: String = "Rua das Palmeiras",
         income: BigDecimal = BigDecimal.valueOf(1000.0),
+        id: Long = 1L
     ) = Customer(
         firstName = firstName,
         lastName = lastName,
@@ -99,4 +99,5 @@ class CreditRepositoryIntegrationTest {
         ),
         income = income,
     )
+
 }

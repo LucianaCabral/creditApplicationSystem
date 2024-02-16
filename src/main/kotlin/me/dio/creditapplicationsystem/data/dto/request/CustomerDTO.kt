@@ -19,7 +19,6 @@ data class CustomerDTO(
     @field:NotEmpty(message = "Add your password") val password: String,
     @field:NotEmpty(message = "Add street address") val street: String,
     @field:NotEmpty(message = "Add zip code name") val zipCode: String,
-    @field:NotEmpty(message = "Add id") val id: Long
 ) {
     fun toEntity(): Customer = Customer(
         firstName = this.firstName,
@@ -29,6 +28,5 @@ data class CustomerDTO(
         email = this.email,
         password = this.password,
         address = Address(street = street, zipCode = zipCode),
-        id = this.id
     )
 }
