@@ -1,6 +1,5 @@
 package me.dio.creditapplicationsystem.repository
 
-import io.mockk.clearAllMocks
 import me.dio.creditapplicationsystem.data.dao.entity.Address
 import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
@@ -57,7 +56,7 @@ class CreditRepositoryIntegrationTest {
     @Test
     fun `should find all credits by customer id`() {
         //given
-        val customerId: Long =  1
+        val customerId: Long =  1L
         //when
         val creditList: List<Credit> = creditRepository.findAllByCustomer(customerId)
         //then
@@ -86,7 +85,6 @@ class CreditRepositoryIntegrationTest {
         zipCode: String = "12345",
         street: String = "Rua das Palmeiras",
         income: BigDecimal = BigDecimal.valueOf(1000.0),
-        id: Long = 1L
     ) = Customer(
         firstName = firstName,
         lastName = lastName,
@@ -99,5 +97,4 @@ class CreditRepositoryIntegrationTest {
         ),
         income = income,
     )
-
 }
