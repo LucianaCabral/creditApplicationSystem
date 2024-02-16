@@ -5,10 +5,11 @@ import me.dio.creditapplicationsystem.data.dao.entity.Credit
 import me.dio.creditapplicationsystem.data.dao.entity.Customer
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.Month
 
 internal object StubCustomer {
 
-     fun buildCustomer(
+    fun buildCustomer(
         firstName: String = "Lorem",
         lastName: String = "Ipsum",
         cpf: String = "28475934625",
@@ -32,4 +33,15 @@ internal object StubCustomer {
         id = id
     )
 
+    fun buildCredit(
+        creditValue: BigDecimal = BigDecimal.valueOf(500.0),
+        dayFirstInstallment: LocalDate = LocalDate.of(2023, Month.APRIL, 22),
+        numberOfInstallments: Int = 5,
+        customer: Customer
+    ): Credit = Credit(
+        creditValue = creditValue,
+        dayFirstInstallment = dayFirstInstallment,
+        numberOfInstallment = numberOfInstallments,
+        customer = customer
+    )
 }
