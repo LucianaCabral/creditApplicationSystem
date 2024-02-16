@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.math.BigDecimal
+import java.util.Random
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -160,6 +161,42 @@ class CustomerControllerTest {
             .andDo(MockMvcResultHandlers.print())
     }
 
+    @Test
+    fun `should delete customer by id and return 204 status`() {
+        //given
+        val customer: Customer = customerRepository.save(buildCustomerDTO().toEntity())
+        //when
+        //then
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("$URL/${customer.id}")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(MockMvcResultMatchers.status().isNoContent)
+            .andDo(MockMvcResultHandlers.print())
+    }
+
+    @Test
+    fun `should not delete customer by id and return 400 status`() {
+        //given
+        val invalidId: Long = Random().nextLong()
+        //when
+        //then
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("$URL/${invalidId}")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(MockMvcResultMatchers.status().isBadRequest)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Bad Request! Consult the Documentation"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.timeStamp").exists())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.status").value(400))
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.exception")
+                    .value("BusinessException")
+            )
+            .andExpect(MockMvcResultMatchers.jsonPath("$.details[*]").isNotEmpty)
+            .andDo(MockMvcResultHandlers.print())
+    }
+
 
 
     fun buildCustomerDTO(
@@ -180,6 +217,7 @@ class CustomerControllerTest {
         email = email,
         password = password,
         street = street,
-        zipCode = zipCode
+        zipCode = zipCode,
+        id = 1L
     )
 }
