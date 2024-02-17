@@ -23,7 +23,8 @@ class CreditServiceImpl(
 
     override fun findByCreditCode(customerId: Long, creditCode: UUID): Credit {
         val credit: Credit = this.creditRepository.findByCreditCode(creditCode = creditCode)
-            ?: throw BusinessException("credit code no t found $creditCode")
-        return if (credit.customer?.id == customerId) credit else throw IllegalArgumentException("Contact admin")
+            ?: throw BusinessException("credit code not found $creditCode")
+        return if (credit.customer?.id == customerId) credit
+        else throw IllegalArgumentException("Contact admin")
     }
 }
